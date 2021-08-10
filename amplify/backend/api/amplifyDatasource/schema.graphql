@@ -1,0 +1,105 @@
+type Client @model {
+	id: ID!
+	identificationName: IdentificationTypes
+	identificationData: String
+	affiliateNumber: Int!
+	name: String!
+	cellphoneNumber: String
+	email: String
+	contractNumber: Int
+	bornDate: String
+	gender: SexType
+	phoneNumber: String
+	admissionDate: String
+	addressStreet: String
+	addressNumber: Int
+	city: String
+	sector: String
+	bloodType: String
+	company: String
+	profileImage: String
+}
+
+type Doctor @model {
+	id: ID!
+	name: String!
+	specialty: String
+	exequator: String
+	email: String
+	title: String
+	phone: String
+	password: String
+}
+
+type Hospital @model {
+	id: ID!
+	name: String!
+	phone: String
+	pssCode: String
+	rnc: String
+}
+
+type HospitalDoctor @model {
+	id: ID!
+	doctorID: ID!
+	hospitalID: ID!
+	lastWaitingListID: ID!
+}
+
+type HospitalDoctorCliente @model {
+  id: ID!
+  clientID: ID!
+  hospitalDoctorID: ID!
+  lastHealthInsurranceID: ID!
+}
+
+type WaitList @model {
+	id: ID!
+	hospitalDoctorID: ID!
+	createdAt: String
+}
+
+type WaitingListItem @model {
+  id: ID!
+  waitingListID: ID!
+  clientID: ID!
+  status: WaitingListItemStatus!
+  positionNumber: Int!
+}
+
+type Insurance @model {
+	id: ID!
+	name: String!
+	contractNumber: Int
+	affiliateNumber: Int
+	affiliateType: AffiliateTypes
+	imageName: String
+}
+
+enum WaitingListItemStatus {
+  CONSULTA
+  ESPERA
+  TERMINADA
+}
+
+enum WaitListStatus {
+	CONSULTA
+	ESPERA
+}
+
+enum SexType {
+	FEMENINO
+	MASCULINO
+}
+
+enum AffiliateTypes {
+	PRINCIPAL
+	TITULAR
+	DEPENDIENTE
+	PARENTESCO
+}
+
+enum IdentificationTypes {
+	CEDULA
+	PASAPORTE
+}
