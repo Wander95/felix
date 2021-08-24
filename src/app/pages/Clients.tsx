@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { FC } from 'react';
+import Test from './Clients/Clients';
 
 // A cada cliente se le debe agregar u
-const Clients = ({ handlePath }) => {
+
+interface IClientsProps {
+  handlePath: (principal: string | null, path1: string | null)=> void
+}
+const Clients: FC<IClientsProps> = ({ handlePath }) => {
+
 	return (
 		<div>
-			<h1>Clientes</h1>
-			<button onClick={() => handlePath(null, 'Juanita Lora')}>add client path</button>
+      <Test handlePath={handlePath}/>
 		</div>
 	);
 };

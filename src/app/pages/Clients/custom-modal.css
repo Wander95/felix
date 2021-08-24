@@ -1,0 +1,9 @@
+/* .customModal {
+  max-width: 1024px !important;
+} */
+
+.react-procedure-modal {
+  max-width: 1210px !important;
+  width: 90% !important;
+  padding: 0 !important;
+}
