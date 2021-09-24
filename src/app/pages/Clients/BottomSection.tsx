@@ -1,54 +1,46 @@
-import React from 'react'
-import RemoveIcon from '../../../assets/images/Remove.icon'
+import React, { FC, MouseEvent } from 'react'
+import Claims from './Claims'
 
-const BottomSection = () => {
+interface IClaim {
+  fechaSeguro?: string;
+  seguro?: string;
+}
+interface IBottomSection {
+  onClickHandler: (evt: MouseEvent<HTMLButtonElement>)=>void
+  claims?: IClaim[],
+}
+
+const BottomSection: FC<IBottomSection> = (props) => {
+  let { claims,onClickHandler } = props;
+  
+  // * validating that data is coming with information
+  // * if not default the array to an empty one
+  if( claims === undefined ) { claims = [] }
+  
   return (
   <div className="px-12 py-8">
       <h2 className="text-xl">Reclamaciones medicas</h2>
-
-
       <div className="flex pt-6">
-        <div>
-          <button className="relative mr-8 mb-2 py-4 px-7 text-2xl rounded-md border-5 border-2 border-blueLucki-default">
-            R
-            <div className="absolute right-0 top-0 rounded-sm p-1 bg-azulMarino-default  grid place-items-center text-xs text-white-section">
-              <RemoveIcon />
-            </div>
-          </button>
-          <span className="block text-sm">21/05/2015</span>
-          <span className="block text-sm">CENASA</span>
-        </div>
-        <div>
-          <button className="relative mr-8 mb-2 py-4 px-7 text-2xl rounded-md border-5 border-2 border-blueLucki-default">
-            R
-          </button>
-          <span className="block text-sm">21/05/2015</span>
-          <span className="block text-sm">CENASA</span>
-        </div>
-        <div>
-          <button className="relative mr-8 mb-2 py-4 px-7 text-2xl rounded-md border-5 border-2 border-blueLucki-default">
-            R
-          </button>
-          <span className="block text-sm">21/05/2015</span>
-          <span className="block text-sm">CENASA</span>
-        </div>
-        <div>
-          <button className="relative mr-8 mb-2 py-4 px-7 text-2xl rounded-md border-5 border-2 border-blueLucki-default">
-            R
-          </button>
-          <span className="block text-sm">21/05/2015</span>
-          <span className="block text-sm">CENASA</span>
-        </div>
-        <div>
-          <button className="relative mr-8 mb-2 py-4 px-7 text-2xl rounded-md border-5 border-2 border-blueLucki-default">
-            R
-          </button>
-          <span className="block text-sm">21/05/2015</span>
-          <span className="block text-sm">CENASA</span>
-        </div>
+        {claims.map((claim,index)=>(
+          <Claims key={`${index}-claims`} {...claim} onClickHandler={onClickHandler}/>
+        ))}
       </div>
     </div>
   )
+}
+
+BottomSection.defaultProps = {
+  claims: [
+    {
+      fechaSeguro: '21/05/2015',
+      seguro: 'SENASA'
+    },
+    {
+      fechaSeguro: '21/05/2014',
+      seguro: 'PALIC'
+    }
+  ],
+  onClickHandler: ()=>{}
 }
 
 export default BottomSection

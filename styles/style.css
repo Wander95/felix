@@ -121,9 +121,18 @@ input {
 	
 }
 
+/* ============================ */
+/* el maldito modal */
+/* ============================ */
 .customModal {
   max-width: 1210px !important;
   width: 90% !important;
+  padding: 0 !important;
+}
+
+.react-procedure-modal {
+  max-width: 12100px !important;
+  width: 95% !important;
   padding: 0 !important;
 }
 

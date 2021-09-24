@@ -4,6 +4,13 @@
 
 .react-procedure-modal {
   max-width: 1210px !important;
-  width: 90% !important;
+  width: 95% !important;
   padding: 0 !important;
+}
+
+.claim-remove-icon-container .claim-remove-icon {
+  display: none;
+}
+.claim-remove-icon-container:hover .claim-remove-icon {
+  display: grid;
 }
